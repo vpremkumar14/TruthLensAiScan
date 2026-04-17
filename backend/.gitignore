@@ -1,0 +1,28 @@
+# Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv
+env/
+venv/
+dist/
+build/
+*.egg-info/
+.DS_Store
+
+# Uploads
+uploads/*
+!uploads/.gitkeep
+
+# Models (optional - can be large)
+models/*.pth
+models/*.pt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

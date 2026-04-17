@@ -1,0 +1,178 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1523 100%);
+  min-height: 100vh;
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-6 py-3 rounded-lg font-semibold transition duration-300 ease-out;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+}
+
+/* Cyan Button (Primary CTA) */
+.btn-cyan {
+  @apply font-bold rounded-lg transition duration-300 ease-out;
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: #000;
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.5);
+  border: none;
+}
+
+.btn-cyan:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 50px rgba(6, 182, 212, 0.8), 0 0 80px rgba(6, 182, 212, 0.4);
+}
+
+/* Outline Button */
+.btn-outline {
+  @apply font-bold rounded-lg transition duration-300 ease-out border-2;
+  border-color: rgba(6, 182, 212, 0.5);
+  color: #06b6d4;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: #06b6d4;
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Cyan Gradient Text */
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Neural Network Background Effect */
+.neural-network-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+  background-size: 100% 100%;
+  animation: networkPulse 8s ease-in-out infinite;
+}
+
+@keyframes networkPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Hero Section Styling */
+.hero-section {
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(26, 21, 35, 0.9) 100%),
+              linear-gradient(45deg, rgba(6, 182, 212, 0.05) 0%, transparent 50%, rgba(34, 211, 238, 0.05) 100%);
+}
+
+/* Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -50px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(50px, 50px) scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.7);
+}
+
+/* Glow text effect */
+.glow-text {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.3);
+}
