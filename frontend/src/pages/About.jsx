@@ -70,7 +70,7 @@ const About = () => {
             <span className="gradient-text">About TruthLens</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            TruthLens AI Scan is a cutting-edge application designed to detect deepfakes and AI-generated media using advanced deep learning techniques.
+            TruthLens AI Scan is a cutting-edge application designed to detect deepfakes using advanced deep learning techniques.
           </p>
         </motion.div>
 
@@ -212,7 +212,7 @@ const About = () => {
         >
           <h2 className="text-3xl font-bold mb-4">Ready to Detect?</h2>
           <p className="text-gray-400 mb-8">
-            Start analyzing images and videos for deepfakes and AI-generated content today.
+            Start analyzing images and videos for deepfakes content today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/image" className="btn-primary">
@@ -227,5 +227,6 @@ const About = () => {
     </div>
   )
 }
+
 
 export default About

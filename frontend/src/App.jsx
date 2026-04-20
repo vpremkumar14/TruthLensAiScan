@@ -8,7 +8,7 @@ import About from './pages/About'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-dark-900">
+      <div className="min-h-screen w-full bg-dark-900 overflow-hidden">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,107 +1,67 @@
 import axios from 'axios'
 
-// Update this to your backend URL
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api'
+// ✅ FIX 1: Remove process.env
+const API_BASE_URL = "http://127.0.0.1:5000"
 
-// Create axios instance with timeout
+// ✅ Create axios instance
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 60000, // 60 second timeout for large files
+  timeout: 60000,
 })
 
-/**
- * Detect if image is real or fake
- * @param {File} file - Image file to analyze
- * @returns {Promise<Object>} - Prediction result with confidence
- */
+// =========================
+// IMAGE DETECTION
+// =========================
 export const detectImage = async (file) => {
   try {
     const formData = new FormData()
     formData.append('file', file)
-    
-    const response = await apiClient.post('/detect/image', formData, {
+
+    const response = await apiClient.post('/api/detect-image', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
-    
-    if (!response.data.success) {
-      throw new Error(response.data.error || 'Detection failed')
-    }
-    
+
+    // ✅ Return directly (no success field)
     return response.data
+
   } catch (error) {
-    throw new Error(error.response?.data?.error || error.message || 'Image detection failed')
+    console.error("Image Error:", error)
+    throw new Error("Image detection failed")
   }
 }
 
-/**
- * Detect if video is real or fake
- * @param {File} file - Video file to analyze
- * @returns {Promise<Object>} - Prediction result with confidence
- */
+// =========================
+// VIDEO DETECTION
+// =========================
 export const detectVideo = async (file) => {
   try {
     const formData = new FormData()
     formData.append('file', file)
-    
-    const response = await apiClient.post('/detect/video', formData, {
+
+    const response = await apiClient.post('/api/detect-video', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
-    
-    if (!response.data.success) {
-      throw new Error(response.data.error || 'Detection failed')
-    }
-    
+
     return response.data
+
   } catch (error) {
-    throw new Error(error.response?.data?.error || error.message || 'Video detection failed')
+    console.error("Video Error:", error)
+    throw new Error("Video detection failed")
   }
 }
 
-/**
- * Detect from image URL
- * @param {string} url - Image URL to analyze
- * @returns {Promise<Object>} - Prediction result with confidence
- */
-export const detectFromUrl = async (url) => {
-  try {
-    const response = await apiClient.post('/detect/url', { url })
-    
-    if (!response.data.success) {
-      throw new Error(response.data.error || 'Detection failed')
-    }
-    
-    return response.data
-  } catch (error) {
-    throw new Error(error.response?.data?.error || error.message || 'URL detection failed')
-  }
-}
-
-/**
- * Health check
- * @returns {Promise<Object>} - API health status
- */
+// =========================
+// HEALTH CHECK
+// =========================
 export const checkHealth = async () => {
   try {
-    const response = await apiClient.get('/health')
+    const response = await apiClient.get('/api/health')
     return response.data
   } catch (error) {
-    throw new Error('API connection failed')
-  }
-}
-
-/**
- * Get API info
- * @returns {Promise<Object>} - API information
- */
-export const getApiInfo = async () => {
-  try {
-    const response = await apiClient.get('/info')
-    return response.data
-  } catch (error) {
-    throw new Error('Failed to fetch API info')
+    throw new Error("Backend not connected")
   }
 }
